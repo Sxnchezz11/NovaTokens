@@ -3,309 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>NovaTokens</title>
 
     <style>
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
         }
 
         body {
-            background: #080b12;
+            font-family: Arial, sans-serif;
+            background: #0b0b12;
             color: white;
         }
 
-        /* NAVBAR */
-
         nav {
-            height: 72px;
-            padding: 0 7%;
+            height: 70px;
+            background: #11111c;
             display: flex;
             align-items: center;
             justify-content: space-between;
-
-            background: #080b12;
-            border-bottom: 1px solid #202735;
-
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            padding: 0 7%;
+            border-bottom: 1px solid #242436;
         }
 
         .logo {
-            font-size: 25px;
-            font-weight: 900;
+            font-size: 24px;
+            font-weight: bold;
+            color: #8b5cf6;
         }
-
-        .logo span {
-            color: #4da3ff;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            color: #a8b1c1;
-            text-decoration: none;
-            transition: 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: white;
-        }
-
-        /* CART BUTTON */
 
         .cart-button {
-            border: 1px solid #293446;
-            background: #121925;
+            background: #8b5cf6;
+            border: none;
             color: white;
-
-            padding: 10px 17px;
-            border-radius: 9px;
-
+            padding: 12px 18px;
+            border-radius: 10px;
             cursor: pointer;
             font-weight: bold;
-
-            transition: 0.2s;
         }
-
-        .cart-button:hover {
-            background: #1c2839;
-        }
-
-        #cart-count {
-            background: #4da3ff;
-            color: white;
-
-            padding: 2px 7px;
-            border-radius: 20px;
-
-            margin-left: 4px;
-        }
-
-        /* HERO */
 
         .hero {
-            min-height: 480px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
             text-align: center;
-            padding: 80px 20px;
-
-            background:
-                radial-gradient(
-                    circle at 50% 20%,
-                    rgba(55, 140, 255, 0.18),
-                    transparent 40%
-                );
-        }
-
-        .hero-content {
-            max-width: 800px;
-        }
-
-        .badge {
-            display: inline-block;
-
-            padding: 7px 15px;
-            border-radius: 50px;
-
-            color: #63adff;
-            background: rgba(70, 150, 255, 0.1);
-
-            border: 1px solid rgba(70, 150, 255, 0.3);
-
-            margin-bottom: 20px;
-            font-size: 13px;
+            padding: 80px 20px 60px;
         }
 
         .hero h1 {
-            font-size: clamp(45px, 7vw, 80px);
-            line-height: 1;
-            letter-spacing: -4px;
+            font-size: 50px;
+            margin-bottom: 15px;
         }
 
         .hero h1 span {
-            color: #4da3ff;
+            color: #8b5cf6;
         }
 
         .hero p {
-            margin-top: 22px;
-
-            color: #98a4b6;
+            color: #aaa;
             font-size: 18px;
-            line-height: 1.6;
-        }
-
-        .hero-button {
-            display: inline-block;
-
-            margin-top: 30px;
-            padding: 14px 25px;
-
-            border-radius: 9px;
-
-            background: #438ff5;
-            color: white;
-
-            text-decoration: none;
-            font-weight: bold;
-
-            transition: 0.2s;
-        }
-
-        .hero-button:hover {
-            transform: translateY(-2px);
-            background: #5ba1ff;
-        }
-
-        /* PRODUCTS */
-
-        .section {
-            max-width: 1150px;
-            margin: auto;
-            padding: 70px 25px;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 45px;
-        }
-
-        .section-title h2 {
-            font-size: 35px;
-        }
-
-        .section-title p {
-            color: #8995a8;
-            margin-top: 10px;
         }
 
         .products {
+            max-width: 1100px;
+            margin: auto;
+            padding: 20px;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 22px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
         }
 
         .product {
-            background: #10151f;
-
-            border: 1px solid #252e3d;
+            background: #141420;
+            border: 1px solid #29293b;
             border-radius: 16px;
-
-            padding: 30px;
+            padding: 25px;
             text-align: center;
-
-            transition: 0.25s;
+            transition: 0.2s;
         }
 
         .product:hover {
-            transform: translateY(-6px);
-            border-color: #438ff5;
+            transform: translateY(-5px);
+            border-color: #8b5cf6;
         }
 
-        .coin {
-            width: 70px;
-            height: 70px;
-
-            margin: 0 auto 20px;
-
-            border-radius: 50%;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-size: 30px;
-
-            background: linear-gradient(
-                135deg,
-                #60b5ff,
-                #286de0
-            );
-
-            box-shadow:
-                0 8px 25px rgba(44, 120, 235, 0.25);
-        }
-
-        .product h3 {
-            font-size: 22px;
+        .product h2 {
+            margin-bottom: 10px;
         }
 
         .tokens {
-            color: #8995a8;
-            margin-top: 7px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #8b5cf6;
+            margin: 15px 0;
         }
 
         .price {
-            font-size: 28px;
-            font-weight: 900;
-            margin: 20px 0;
+            font-size: 22px;
+            margin-bottom: 20px;
         }
 
         .buy-button {
             width: 100%;
-
-            padding: 13px;
-
+            padding: 12px;
             border: none;
             border-radius: 9px;
-
-            background: #1c2635;
+            background: #8b5cf6;
             color: white;
-
             font-weight: bold;
             cursor: pointer;
-
-            transition: 0.2s;
         }
 
         .buy-button:hover {
-            background: #438ff5;
+            background: #7c3aed;
         }
 
-        /* CART PANEL */
+        /* CARRITO */
 
-        .cart-panel {
+        .cart {
             position: fixed;
-
             top: 0;
-            right: -420px;
-
-            width: 400px;
+            right: -400px;
+            width: 380px;
             max-width: 100%;
-
             height: 100vh;
-
-            background: #0d121b;
-
-            border-left: 1px solid #293344;
-
-            z-index: 1000;
-
-            transition: right 0.3s;
-
+            background: #11111c;
+            border-left: 1px solid #29293b;
             padding: 25px;
-
-            display: flex;
-            flex-direction: column;
+            transition: 0.3s;
+            z-index: 1000;
+            overflow-y: auto;
         }
 
-        .cart-panel.open {
+        .cart.open {
             right: 0;
         }
 
@@ -313,886 +142,350 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-
-            padding-bottom: 20px;
-
-            border-bottom: 1px solid #252e3d;
-        }
-
-        .cart-header h2 {
-            font-size: 23px;
+            margin-bottom: 25px;
         }
 
         .close-cart {
             background: none;
             border: none;
-
-            color: #a8b1c1;
-
-            font-size: 28px;
-
+            color: white;
+            font-size: 25px;
             cursor: pointer;
         }
 
-        .cart-items {
-            flex: 1;
-
-            overflow-y: auto;
-
-            padding: 20px 0;
-        }
-
         .cart-item {
-            background: #141b27;
-
-            border: 1px solid #252e3d;
-
-            border-radius: 10px;
-
+            background: #191925;
             padding: 15px;
-
+            border-radius: 10px;
             margin-bottom: 12px;
         }
 
-        .cart-item-top {
-            display: flex;
-            justify-content: space-between;
-
-            font-weight: bold;
+        .cart-item strong {
+            display: block;
+            margin-bottom: 5px;
         }
 
-        .cart-item-price {
-            color: #4da3ff;
-            margin-top: 8px;
+        .cart-item small {
+            color: #aaa;
         }
 
         .quantity {
             display: flex;
             align-items: center;
-
             gap: 10px;
-
-            margin-top: 12px;
+            margin-top: 10px;
         }
 
         .quantity button {
             width: 28px;
             height: 28px;
-
             border: none;
             border-radius: 6px;
-
-            background: #253144;
-            color: white;
-
             cursor: pointer;
-
+            background: #8b5cf6;
+            color: white;
             font-weight: bold;
         }
 
         .remove {
-            margin-left: auto;
-
-            color: #ff6b6b !important;
+            margin-top: 10px;
+            background: #ef4444 !important;
         }
 
-        .cart-footer {
-            border-top: 1px solid #252e3d;
-
+        .cart-total {
+            border-top: 1px solid #29293b;
+            margin-top: 20px;
             padding-top: 20px;
-        }
-
-        .total {
-            display: flex;
-            justify-content: space-between;
-
-            font-size: 21px;
+            font-size: 20px;
             font-weight: bold;
-
-            margin-bottom: 18px;
         }
 
-        .checkout {
+        .checkout-button {
             width: 100%;
-
             padding: 14px;
-
+            margin-top: 20px;
             border: none;
-            border-radius: 9px;
-
-            background: #438ff5;
+            border-radius: 10px;
+            background: #22c55e;
             color: white;
-
             font-weight: bold;
-
+            font-size: 16px;
             cursor: pointer;
         }
 
-        .checkout:hover {
-            background: #5ba1ff;
+        .checkout-button:hover {
+            background: #16a34a;
         }
 
-        .empty {
-            color: #7e899b;
+        footer {
             text-align: center;
-            padding-top: 50px;
-        }
-
-        /* FEATURES */
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .feature {
-            background: #0e131c;
-
-            border: 1px solid #202936;
-
-            border-radius: 14px;
-
-            padding: 25px;
-        }
-
-        .feature-icon {
-            font-size: 28px;
-            margin-bottom: 14px;
-        }
-
-        .feature h3 {
-            margin-bottom: 8px;
-        }
-
-        .feature p {
-            color: #8995a8;
-            line-height: 1.5;
+            padding: 50px 20px;
+            margin-top: 60px;
+            color: #777;
             font-size: 14px;
         }
 
-        /* FOOTER */
-
-        footer {
-            border-top: 1px solid #202735;
-
-            text-align: center;
-
-            padding: 35px 20px;
-
-            color: #697487;
-
-            font-size: 13px;
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 800px) {
-
-            .nav-links {
-                display: none;
+        @media (max-width: 500px) {
+            .hero h1 {
+                font-size: 38px;
             }
 
-            nav {
-                padding: 0 20px;
-            }
-
-            .products {
-                grid-template-columns: 1fr;
-            }
-
-            .features {
-                grid-template-columns: 1fr;
-            }
-
-            .cart-panel {
+            .cart {
                 width: 100%;
             }
         }
     </style>
 </head>
 
-
 <body>
 
-
-<!-- NAVBAR -->
-
-<nav>
-
-    <div class="logo">
-        Nova<span>Tokens</span>
-    </div>
-
-    <div class="nav-links">
-
-        <a href="#inicio">
-            Inicio
-        </a>
-
-        <a href="#productos">
-            Productos
-        </a>
-
-        <a href="#info">
-            Información
-        </a>
-
-    </div>
-
-    <button
-        class="cart-button"
-        onclick="toggleCart()">
-
-        🛒 Carrito
-
-        <span id="cart-count">
-            0
-        </span>
-
-    </button>
-
-</nav>
-
-
-<!-- HERO -->
-
-<section
-    class="hero"
-    id="inicio">
-
-    <div class="hero-content">
-
-        <div class="badge">
-            ⚡ NOVATOKENS
-        </div>
-
-        <h1>
-            Level up your
-            <br>
-            <span>gaming experience.</span>
-        </h1>
-
-        <p>
-            Compra tus tokens de forma sencilla
-            y disfruta de una experiencia rápida.
-        </p>
-
-        <a
-            href="#productos"
-            class="hero-button">
-
-            Ver productos →
-
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- PRODUCTS -->
-
-<section
-    class="section"
-    id="productos">
-
-    <div class="section-title">
-
-        <h2>
-            Elige tus tokens
-        </h2>
-
-        <p>
-            Selecciona el paquete que quieras.
-        </p>
-
-    </div>
-
-
-    <div class="products">
-
-
-        <!-- PRODUCT 1 -->
-
-        <div class="product">
-
-            <div class="coin">
-                🪙
-            </div>
-
-            <h3>
-                Starter
-            </h3>
-
-            <div class="tokens">
-                100 Tokens
-            </div>
-
-            <div class="price">
-                1,99 €
-            </div>
-
-            <button
-                class="buy-button"
-                onclick="addToCart(
-                    'Starter',
-                    100,
-                    1.99
-                )">
-
-                Añadir al carrito
-
-            </button>
-
-        </div>
-
-
-        <!-- PRODUCT 2 -->
-
-        <div class="product">
-
-            <div class="coin">
-                🪙
-            </div>
-
-            <h3>
-                Pro
-            </h3>
-
-            <div class="tokens">
-                500 Tokens
-            </div>
-
-            <div class="price">
-                7,99 €
-            </div>
-
-            <button
-                class="buy-button"
-                onclick="addToCart(
-                    'Pro',
-                    500,
-                    7.99
-                )">
-
-                Añadir al carrito
-
-            </button>
-
-        </div>
-
-
-        <!-- PRODUCT 3 -->
-
-        <div class="product">
-
-            <div class="coin">
-                🪙
-            </div>
-
-            <h3>
-                Elite
-            </h3>
-
-            <div class="tokens">
-                1000 Tokens
-            </div>
-
-            <div class="price">
-                14,99 €
-            </div>
-
-            <button
-                class="buy-button"
-                onclick="addToCart(
-                    'Elite',
-                    1000,
-                    14.99
-                )">
-
-                Añadir al carrito
-
-            </button>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- INFORMATION -->
-
-<section
-    class="section"
-    id="info">
-
-    <div class="section-title">
-
-        <h2>
-            ¿Por qué NovaTokens?
-        </h2>
-
-    </div>
-
-
-    <div class="features">
-
-
-        <div class="feature">
-
-            <div class="feature-icon">
-                ⚡
-            </div>
-
-            <h3>
-                Rápido
-            </h3>
-
-            <p>
-                Una experiencia sencilla y rápida
-                para realizar tus pedidos.
-            </p>
-
-        </div>
-
-
-        <div class="feature">
-
-            <div class="feature-icon">
-                🔒
-            </div>
-
-            <h3>
-                Seguro
-            </h3>
-
-            <p>
-                Diseñado para mantener tus datos
-                protegidos.
-            </p>
-
-        </div>
-
-
-        <div class="feature">
-
-            <div class="feature-icon">
-                🎮
-            </div>
-
-            <h3>
-                Gaming
-            </h3>
-
-            <p>
-                Una tienda creada para la comunidad
-                gaming.
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- CART -->
-
-<div
-    class="cart-panel"
-    id="cart-panel">
-
-
-    <div class="cart-header">
-
-        <h2>
-            🛒 Tu carrito
-        </h2>
-
-        <button
-            class="close-cart"
-            onclick="toggleCart()">
-
-            ×
-
+    <nav>
+        <div class="logo">NovaTokens</div>
+
+        <button class="cart-button" onclick="toggleCart()">
+            🛒 Carrito
         </button>
+    </nav>
 
-    </div>
+    <section class="hero">
+        <h1>Compra <span>NovaTokens</span></h1>
+        <p>Elige la cantidad de tokens que quieras.</p>
+    </section>
 
+    <section class="products">
 
-    <div
-        class="cart-items"
-        id="cart-items">
-
-    </div>
-
-
-    <div class="cart-footer">
-
-        <div class="total">
-
-            <span>
-                Total
-            </span>
-
-            <span id="cart-total">
-                0,00 €
-            </span>
-
+        <div class="product">
+            <h2>Starter</h2>
+            <div class="tokens">5 Tokens</div>
+            <div class="price">5,00 €</div>
+            <button class="buy-button" onclick="addToCart('Starter', 5, 5)">
+                Añadir al carrito
+            </button>
         </div>
 
+        <div class="product">
+            <h2>Basic</h2>
+            <div class="tokens">10 Tokens</div>
+            <div class="price">10,00 €</div>
+            <button class="buy-button" onclick="addToCart('Basic', 10, 10)">
+                Añadir al carrito
+            </button>
+        </div>
 
-        <button
-            class="checkout"
-            onclick="checkout()">
+        <div class="product">
+            <h2>Plus</h2>
+            <div class="tokens">15 Tokens</div>
+            <div class="price">15,00 €</div>
+            <button class="buy-button" onclick="addToCart('Plus', 15, 15)">
+                Añadir al carrito
+            </button>
+        </div>
 
+        <div class="product">
+            <h2>Pro</h2>
+            <div class="tokens">20 Tokens</div>
+            <div class="price">20,00 €</div>
+            <button class="buy-button" onclick="addToCart('Pro', 20, 20)">
+                Añadir al carrito
+            </button>
+        </div>
+
+        <div class="product">
+            <h2>Ultimate</h2>
+            <div class="tokens">50 Tokens</div>
+            <div class="price">50,00 €</div>
+            <button class="buy-button" onclick="addToCart('Ultimate', 50, 50)">
+                Añadir al carrito
+            </button>
+        </div>
+
+    </section>
+
+    <!-- CARRITO -->
+
+    <div class="cart" id="cart">
+
+        <div class="cart-header">
+            <h2>Tu carrito</h2>
+
+            <button class="close-cart" onclick="toggleCart()">
+                ×
+            </button>
+        </div>
+
+        <div id="cartItems"></div>
+
+        <div class="cart-total">
+            Total: <span id="cartTotal">0,00 €</span>
+        </div>
+
+        <button class="checkout-button" onclick="checkout()">
             Continuar al pago
-
         </button>
 
     </div>
 
-</div>
+    <footer>
+        © 2026 NovaTokens
 
+        <br><br>
 
-<!-- FOOTER -->
+        NovaTokens no está afiliado, patrocinado ni respaldado por Epic Games.
+    </footer>
 
-<footer>
+    <script>
 
-    <p>
-        © 2026
-        <strong>NovaTokens</strong>.
-        Todos los derechos reservados.
-    </p>
+        let cart = JSON.parse(localStorage.getItem("novatokens_cart")) || [];
 
-    <br>
-
-    <p>
-        NovaTokens no está afiliado,
-        patrocinado ni respaldado por Epic Games.
-    </p>
-
-</footer>
-
-
-<script>
-
-    /*
-        CARRITO
-    */
-
-    let cart = JSON.parse(
-        localStorage.getItem("novatokens_cart")
-    ) || [];
-
-
-    /*
-        AÑADIR PRODUCTO
-    */
-
-    function addToCart(
-        name,
-        tokens,
-        price
-    ) {
-
-        const existingProduct =
-            cart.find(
-                product =>
-                    product.name === name
-            );
-
-
-        if (existingProduct) {
-
-            existingProduct.quantity++;
-
-        } else {
-
-            cart.push({
-
-                name: name,
-
-                tokens: tokens,
-
-                price: price,
-
-                quantity: 1
-
-            });
-
+        function saveCart() {
+            localStorage.setItem("novatokens_cart", JSON.stringify(cart));
         }
 
+        function addToCart(name, tokens, price) {
 
-        saveCart();
+            const existing = cart.find(item => item.name === name);
 
-        updateCart();
+            if (existing) {
+                existing.quantity++;
+            } else {
+                cart.push({
+                    name: name,
+                    tokens: tokens,
+                    price: price,
+                    quantity: 1
+                });
+            }
 
-        openCart();
-
-    }
-
-
-    /*
-        CAMBIAR CANTIDAD
-    */
-
-    function changeQuantity(
-        index,
-        amount
-    ) {
-
-        cart[index].quantity += amount;
-
-
-        if (
-            cart[index].quantity <= 0
-        ) {
-
-            cart.splice(index, 1);
-
+            saveCart();
+            renderCart();
+            toggleCart(true);
         }
 
+        function removeFromCart(name) {
 
-        saveCart();
+            cart = cart.filter(item => item.name !== name);
 
-        updateCart();
-
-    }
-
-
-    /*
-        ELIMINAR PRODUCTO
-    */
-
-    function removeProduct(index) {
-
-        cart.splice(index, 1);
-
-        saveCart();
-
-        updateCart();
-
-    }
-
-
-    /*
-        ACTUALIZAR CARRITO
-    */
-
-    function updateCart() {
-
-        const container =
-            document.getElementById(
-                "cart-items"
-            );
-
-        const count =
-            document.getElementById(
-                "cart-count"
-            );
-
-        const totalElement =
-            document.getElementById(
-                "cart-total"
-            );
-
-
-        container.innerHTML = "";
-
-
-        let total = 0;
-
-        let itemCount = 0;
-
-
-        if (cart.length === 0) {
-
-            container.innerHTML = `
-                <div class="empty">
-                    Tu carrito está vacío.
-                    <br><br>
-                    Añade algún producto.
-                </div>
-            `;
-
+            saveCart();
+            renderCart();
         }
 
+        function changeQuantity(name, amount) {
 
-        cart.forEach(
-            (product, index) => {
+            const item = cart.find(item => item.name === name);
 
-                const productTotal =
-                    product.price *
-                    product.quantity;
+            if (!item) return;
 
+            item.quantity += amount;
 
-                total += productTotal;
+            if (item.quantity <= 0) {
+                removeFromCart(name);
+                return;
+            }
 
-                itemCount +=
-                    product.quantity;
+            saveCart();
+            renderCart();
+        }
 
+        function renderCart() {
 
-                container.innerHTML += `
+            const cartItems = document.getElementById("cartItems");
+            const cartTotal = document.getElementById("cartTotal");
 
-                    <div class="cart-item">
+            cartItems.innerHTML = "";
 
-                        <div class="cart-item-top">
+            let total = 0;
 
-                            <span>
-                                ${product.name}
-                            </span>
+            if (cart.length === 0) {
 
-                            <span>
-                                ${product.tokens}
-                                Tokens
-                            </span>
-
-                        </div>
-
-
-                        <div class="cart-item-price">
-
-                            ${productTotal.toFixed(2)}
-                            €
-
-                        </div>
-
-
-                        <div class="quantity">
-
-                            <button
-                                onclick="changeQuantity(
-                                    ${index},
-                                    -1
-                                )">
-
-                                −
-
-                            </button>
-
-
-                            <span>
-                                ${product.quantity}
-                            </span>
-
-
-                            <button
-                                onclick="changeQuantity(
-                                    ${index},
-                                    1
-                                )">
-
-                                +
-
-                            </button>
-
-
-                            <button
-                                class="remove"
-                                onclick="removeProduct(
-                                    ${index}
-                                )">
-
-                                Eliminar
-
-                            </button>
-
-                        </div>
-
-                    </div>
-
+                cartItems.innerHTML = `
+                    <p style="color:#aaa;">
+                        Tu carrito está vacío.
+                    </p>
                 `;
 
+            } else {
+
+                cart.forEach(item => {
+
+                    const subtotal = item.price * item.quantity;
+
+                    total += subtotal;
+
+                    cartItems.innerHTML += `
+
+                        <div class="cart-item">
+
+                            <strong>${item.name} — ${item.tokens} Tokens</strong>
+
+                            <small>
+                                ${item.price.toFixed(2).replace(".", ",")} € por pack
+                            </small>
+
+                            <div class="quantity">
+
+                                <button onclick="changeQuantity('${item.name}', -1)">
+                                    −
+                                </button>
+
+                                <span>${item.quantity}</span>
+
+                                <button onclick="changeQuantity('${item.name}', 1)">
+                                    +
+                                </button>
+
+                            </div>
+
+                            <div style="margin-top:8px;">
+                                Subtotal:
+                                ${subtotal.toFixed(2).replace(".", ",")} €
+                            </div>
+
+                            <button
+                                class="quantity button remove"
+                                onclick="removeFromCart('${item.name}')">
+                                Eliminar
+                            </button>
+
+                        </div>
+
+                    `;
+                });
             }
-        );
 
-
-        count.textContent =
-            itemCount;
-
-
-        totalElement.textContent =
-            total.toFixed(2)
-            .replace(".", ",")
-            + " €";
-
-    }
-
-
-    /*
-        GUARDAR CARRITO
-    */
-
-    function saveCart() {
-
-        localStorage.setItem(
-            "novatokens_cart",
-            JSON.stringify(cart)
-        );
-
-    }
-
-
-    /*
-        ABRIR / CERRAR CARRITO
-    */
-
-    function toggleCart() {
-
-        document
-            .getElementById("cart-panel")
-            .classList.toggle("open");
-
-    }
-
-
-    function openCart() {
-
-        document
-            .getElementById("cart-panel")
-            .classList.add("open");
-
-    }
-
-
-    /*
-        CHECKOUT
-    */
-
-    function checkout() {
-
-        if (cart.length === 0) {
-
-            alert(
-                "Tu carrito está vacío."
-            );
-
-            return;
-
+            cartTotal.textContent =
+                total.toFixed(2).replace(".", ",") + " €";
         }
 
+        function toggleCart(forceOpen = null) {
 
-        alert(
-            "El sistema de pago todavía no está conectado.\n\n" +
-            "El siguiente paso será añadir un checkout seguro."
-        );
+            const cartElement = document.getElementById("cart");
 
-    }
+            if (forceOpen === true) {
+                cartElement.classList.add("open");
+                return;
+            }
 
+            cartElement.classList.toggle("open");
+        }
 
-    /*
-        INICIAR CARRITO
-    */
+        // NUEVO: llevar el carrito a checkout.html
 
-    updateCart();
+        function checkout() {
 
-</script>
+            if (cart.length === 0) {
 
+                alert("Tu carrito está vacío.");
+
+                return;
+
+            }
+
+            window.location.href = "checkout.html";
+        }
+
+        renderCart();
+
+    </script>
 
 </body>
 </html>
