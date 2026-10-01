@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout | NovaTokens</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    rgba(65, 145, 255, 0.12),
+                    transparent 40%
+                ),
+                #080b12;
+
+            color: white;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            height: 72px;
+
+            padding: 0 7%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            border-bottom: 1px solid #202735;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 900;
+        }
+
+        .logo span {
+            color: #4da3ff;
+        }
+
+        .back {
+            color: #9ba7b9;
+            text-decoration: none;
+        }
+
+        .back:hover {
+            color: white;
+        }
+
+        /* MAIN */
+
+        main {
+            max-width: 1000px;
+
+            margin: auto;
+
+            padding: 70px 25px;
+        }
+
+        .title {
+            text-align: center;
+
+            margin-bottom: 45px;
+        }
+
+        .title h1 {
+            font-size: 42px;
+        }
+
+        .title p {
+            color: #8995a8;
+
+            margin-top: 10px;
+        }
+
+        .checkout-grid {
+            display: grid;
+
+            grid-template-columns:
+                1fr 360px;
+
+            gap: 25px;
+        }
+
+        /* BOX */
+
+        .box {
+            background: #10151f;
+
+            border: 1px solid #252e3d;
+
+            border-radius: 15px;
+
+            padding: 28px;
+        }
+
+        .box h2 {
+            margin-bottom: 25px;
+
+            font-size: 21px;
+        }
+
+        /* FORM */
+
+        .field {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #aab4c4;
+
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+
+            padding: 13px;
+
+            background: #0b1018;
+
+            border: 1px solid #293446;
+
+            border-radius: 8px;
+
+            color: white;
+
+            outline: none;
+
+            font-size: 15px;
+        }
+
+        input:focus {
+            border-color: #438ff5;
+        }
+
+        /* ORDER */
+
+        .order-item {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 15px 0;
+
+            border-bottom:
+                1px solid #252e3d;
+        }
+
+        .order-name {
+            font-weight: bold;
+        }
+
+        .order-details {
+            color: #8995a8;
+
+            font-size: 13px;
+
+            margin-top: 5px;
+        }
+
+        .order-price {
+            font-weight: bold;
+        }
+
+        .total {
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-top: 25px;
+
+            font-size: 22px;
+
+            font-weight: 900;
+        }
+
+        .pay-button {
+            width: 100%;
+
+            margin-top: 25px;
+
+            padding: 15px;
+
+            border: none;
+
+            border-radius: 9px;
+
+            background: #438ff5;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .pay-button:hover {
+            background: #5ba1ff;
+        }
+
+        .empty {
+            text-align: center;
+
+            color: #8995a8;
+
+            padding: 30px 0;
+        }
+
+        .notice {
+            margin-top: 18px;
+
+            color: #697487;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+
+            text-align: center;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            .checkout-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .title h1 {
+                font-size: 34px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        Nova<span>Tokens</span>
+    </div>
+
+    <a
+        class="back"
+        href="index.html">
+
+        ← Volver a la tienda
+
+    </a>
+
+</nav>
+
+
+<main>
+
+
+    <div class="title">
+
+        <h1>
+            Finalizar compra
+        </h1>
+
+        <p>
+            Revisa tu pedido antes de continuar.
+        </p>
+
+    </div>
+
+
+    <div class="checkout-grid">
+
+
+        <!-- CUSTOMER INFORMATION -->
+
+        <div class="box">
+
+            <h2>
+                Información del pedido
+            </h2>
+
+
+            <div class="field">
+
+                <label>
+                    Nombre
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Tu nombre">
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="tu@email.com">
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Confirmar email
+                </label>
+
+                <input
+                    type="email"
+                    id="email-confirm"
+                    placeholder="Repite tu email">
+
+            </div>
+
+
+            <p class="notice">
+
+                Tu información se utilizará únicamente
+                para gestionar el pedido.
+
+            </p>
+
+        </div>
+
+
+        <!-- ORDER -->
+
+        <div class="box">
+
+            <h2>
+                Tu pedido
+            </h2>
+
+
+            <div id="order-items">
+
+            </div>
+
+
+            <div class="total">
+
+                <span>
+                    Total
+                </span>
+
+                <span id="total">
+                    0,00 €
+                </span>
+
+            </div>
+
+
+            <button
+                class="pay-button"
+                onclick="continuePayment()">
+
+                Continuar al pago
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /*
+        OBTENER CARRITO
+    */
+
+    const cart =
+        JSON.parse(
+            localStorage.getItem(
+                "novatokens_cart"
+            )
+        ) || [];
+
+
+    const orderContainer =
+        document.getElementById(
+            "order-items"
+        );
+
+
+    const totalElement =
+        document.getElementById(
+            "total"
+        );
+
+
+    /*
+        MOSTRAR CARRITO
+    */
+
+    function loadOrder() {
+
+        orderContainer.innerHTML = "";
+
+        let total = 0;
+
+
+        if (cart.length === 0) {
+
+            orderContainer.innerHTML = `
+
+                <div class="empty">
+
+                    Tu carrito está vacío.
+
+                    <br><br>
+
+                    <a
+                        href="index.html"
+                        style="color:#4da3ff;">
+
+                        Volver a la tienda
+
+                    </a>
+
+                </div>
+
+            `;
+
+            totalElement.textContent =
+                "0,00 €";
+
+            return;
+
+        }
+
+
+        cart.forEach(product => {
+
+            const productTotal =
+                product.price *
+                product.quantity;
+
+
+            total += productTotal;
+
+
+            orderContainer.innerHTML += `
+
+                <div class="order-item">
+
+                    <div>
+
+                        <div class="order-name">
+
+                            ${product.name}
+
+                        </div>
+
+                        <div class="order-details">
+
+                            ${product.tokens}
+                            Tokens ×
+                            ${product.quantity}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="order-price">
+
+                        ${productTotal
+                            .toFixed(2)
+                            .replace(".", ",")
+                        } €
+
+                    </div>
+
+                </div>
+
+            `;
+
+        });
+
+
+        totalElement.textContent =
+            total
+                .toFixed(2)
+                .replace(".", ",")
+            + " €";
+
+    }
+
+
+    /*
+        CONTINUAR AL PAGO
+    */
+
+    function continuePayment() {
+
+        const name =
+            document
+                .getElementById("name")
+                .value
+                .trim();
+
+
+        const email =
+            document
+                .getElementById("email")
+                .value
+                .trim();
+
+
+        const emailConfirm =
+            document
+                .getElementById(
+                    "email-confirm"
+                )
+                .value
+                .trim();
+
+
+        if (cart.length === 0) {
+
+            alert(
+                "Tu carrito está vacío."
+            );
+
+            return;
+
+        }
+
+
+        if (!name) {
+
+            alert(
+                "Introduce tu nombre."
+            );
+
+            return;
+
+        }
+
+
+        if (!email) {
+
+            alert(
+                "Introduce tu email."
+            );
+
+            return;
+
+        }
+
+
+        if (email !== emailConfirm) {
+
+            alert(
+                "Los emails no coinciden."
+            );
+
+            return;
+
+        }
+
+
+        alert(
+            "Datos correctos.\n\n" +
+            "El siguiente paso será conectar " +
+            "un sistema de pago seguro."
+        );
+
+    }
+
+
+    loadOrder();
+
+</script>
+
+
+</body>
+
+</html>
